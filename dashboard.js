@@ -4,6 +4,7 @@
 
 let currentUser = null;
 let isAdmin = false;
+let surveysData = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     const userJson = localStorage.getItem('currentUser');
@@ -60,6 +61,7 @@ function loadDashboardData() {
     fetch('/data')
     .then(res => res.json())
     .then(data => {
+        surveysData = data;
         loadDataTable(data);
     });
 
@@ -71,11 +73,12 @@ function loadDataTable(surveys) {
     if (!tbody) return;
     tbody.innerHTML = '';
     if (!surveys || surveys.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">لا توجد بيانات حالياً</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:20px;">لا توجد بيانات حالياً</td></tr>';
         return;
     }
     surveys.forEach((survey, index) => {
         const row = document.createElement('tr');
+        const surveyId = survey._id || `survey_${index}`;
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${survey["الجنس"] || '-'}</td>
@@ -83,9 +86,22 @@ function loadDataTable(surveys) {
             <td>${survey["نوع التخصص"] || '-'}</td>
             <td>${survey["شدة الألم الحالية"] || '-'}</td>
             <td>${survey["تاريخ الإرسال"] || '-'}</td>
+            <td><button class="btn-delete-survey" onclick="deleteSurvey('${surveyId}')">حذف</button></td>
         `;
         tbody.appendChild(row);
     });
+}
+
+async function deleteSurvey(surveyId) {
+    if (!confirm('هل أنت متأكد من حذف هذا الاستبيان؟')) return;
+    try {
+        const res = await fetch(`/delete-survey/${surveyId}`, { method: 'DELETE' });
+        const msg = await res.text();
+        alert(msg);
+        loadDashboardData();
+    } catch (err) { 
+        alert("فشل الحذف"); 
+    }
 }
 
 // --- إدارة المستخدمين ---
@@ -95,12 +111,13 @@ async function handleAddUser(e) {
     const name = document.getElementById('newName').value;
     const username = document.getElementById('newUsername').value;
     const password = document.getElementById('newPassword').value;
+    const role = document.getElementById('newRole').value;
 
     try {
         const res = await fetch('/add-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, username, password })
+            body: JSON.stringify({ name, username, password, role })
         });
         const msg = await res.text();
         alert(msg);
@@ -125,9 +142,10 @@ function loadUsersList() {
             item.innerHTML = `
                 <div>
                     <strong>${user.name}</strong> (@${user.username})
+                    <span style="margin-right: 10px; font-size: 12px; color: #666;">${user.role === 'admin' ? '[مدير]' : '[مستخدم]'}</span>
                 </div>
                 <div>
-                    <button class="btn-primary" style="padding:5px 10px; font-size:12px;" onclick="editUser('${user._id}', '${user.name}', '${user.username}')">تعديل</button>
+                    <button class="btn-primary" style="padding:5px 10px; font-size:12px;" onclick="editUser('${user._id}', '${user.name}', '${user.username}', '${user.role}')">تعديل</button>
                     <button class="btn-secondary" style="padding:5px 10px; font-size:12px; background:#e74c3c;" onclick="deleteUser('${user._id}')">حذف</button>
                 </div>
             `;
@@ -147,7 +165,7 @@ async function deleteUser(id) {
     } catch (err) { alert("فشل الحذف"); }
 }
 
-async function editUser(id, oldName, oldUsername) {
+async function editUser(id, oldName, oldUsername, oldRole) {
     const newName = prompt("أدخل الاسم الجديد:", oldName);
     const newUsername = prompt("أدخل اسم المستخدم الجديد:", oldUsername);
     const newPassword = prompt("أدخل كلمة المرور الجديدة (أو اتركها كما هي):");

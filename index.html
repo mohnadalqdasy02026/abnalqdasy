@@ -171,44 +171,28 @@
                 </div>
 
                 <div class="form-group">
-                    <label>الطول (ملم):</label>
-                    <input type="number" name="phoneLength" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label>العرض (ملم):</label>
-                    <input type="number" name="phoneWidth" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label>السمك (ملم):</label>
-                    <input type="number" name="phoneThickness" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label>الوزن (جم):</label>
-                    <input type="number" name="phoneWeight" step="0.1">
-                </div>
-                <div class="form-group">
                     <label>حجم الشاشة (بوصة):</label>
                     <input type="number" name="screenSize" step="0.1">
                 </div>
 
                 <div class="form-group">
-                    <label>مدة الاستخدام منذ البداية وحتى الآن (سنوات):</label>
-                    <input type="number" name="usageDurationTotal" step="0.5">
+                    <label>مدة الاستخدام منذ البداية (سنوات):</label>
+                    <input type="number" name="usageDurationTotal" step="0.5" placeholder="مثلاً: 3.5">
                 </div>
 
                 <div class="form-group">
-                    <label>مدة الاستخدام في المرة الواحدة يومياً (ساعات):</label>
-                    <input type="number" name="usageDurationDaily" step="0.5">
+                    <label>مدة الاستخدام اليومي (ساعات):</label>
+                    <input type="number" name="usageDurationDaily" step="0.5" placeholder="مثلاً: 5">
                 </div>
 
                 <div class="form-group">
-                    <label>فترة الاستخدام:</label>
-                    <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="usagePeriod" value="الصباح"> الصباح</label>
-                        <label class="radio-label"><input type="radio" name="usagePeriod" value="الظهيرة"> الظهيرة</label>
-                        <label class="radio-label"><input type="radio" name="usagePeriod" value="بعد الظهر"> بعد الظهر</label>
-                        <label class="radio-label"><input type="radio" name="usagePeriod" value="المساء"> المساء</label>
-                        <label class="radio-label"><input type="radio" name="usagePeriod" value="أوقات أخرى"> أوقات أخرى (مثل قبل النوم)</label>
+                    <label>فترة الاستخدام (اختر كل ما ينطبق):</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="usagePeriod" value="الصباح"> الصباح</label>
+                        <label class="checkbox-label"><input type="checkbox" name="usagePeriod" value="الظهيرة"> الظهيرة</label>
+                        <label class="checkbox-label"><input type="checkbox" name="usagePeriod" value="بعد الظهر"> بعد الظهر</label>
+                        <label class="checkbox-label"><input type="checkbox" name="usagePeriod" value="المساء"> المساء</label>
+                        <label class="checkbox-label"><input type="checkbox" name="usagePeriod" value="أوقات أخرى"> أوقات أخرى (مثل قبل النوم)</label>
                     </div>
                 </div>
 
@@ -240,13 +224,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label>وضعية الجسم أثناء الاستخدام:</label>
-                    <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="bodyPosture" value="الجلوس"> الجلوس</label>
-                        <label class="radio-label"><input type="radio" name="bodyPosture" value="الوقوف"> الوقوف</label>
-                        <label class="radio-label"><input type="radio" name="bodyPosture" value="المشي"> المشي</label>
-                        <label class="radio-label"><input type="radio" name="bodyPosture" value="الاستلقاء"> الاستلقاء</label>
-                        <label class="radio-label"><input type="radio" name="bodyPosture" value="وضعيات أخرى"> وضعيات أخرى</label>
+                    <label>وضعية الجسم أثناء الاستخدام (اختر كل ما ينطبق):</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="bodyPosture" value="الجلوس"> الجلوس</label>
+                        <label class="checkbox-label"><input type="checkbox" name="bodyPosture" value="الوقوف"> الوقوف</label>
+                        <label class="checkbox-label"><input type="checkbox" name="bodyPosture" value="المشي"> المشي</label>
+                        <label class="checkbox-label"><input type="checkbox" name="bodyPosture" value="الاستلقاء"> الاستلقاء</label>
+                        <label class="checkbox-label"><input type="checkbox" name="bodyPosture" value="وضعيات أخرى"> وضعيات أخرى</label>
                     </div>
                 </div>
 
@@ -270,8 +254,8 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>نوع الأجهزة الأخرى:</label>
+                <div class="form-group" id="otherDevicesTypeGroup" style="display: none;">
+                    <label>نوع الأجهزة الأخرى (اختياري - اختر كل ما ينطبق):</label>
                     <div class="checkbox-group">
                         <label class="checkbox-label"><input type="checkbox" name="otherDevicesType" value="فأرة (ماوس)"> فأرة (ماوس)</label>
                         <label class="checkbox-label"><input type="checkbox" name="otherDevicesType" value="حاسوب محمول (لابتوب)"> حاسوب محمول (لابتوب)</label>
@@ -280,17 +264,17 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>مدة استخدام الأجهزة الأخرى منذ البداية وحتى الآن (سنوات):</label>
-                    <input type="number" name="otherDevicesDurationTotal" step="0.5">
+                <div class="form-group" id="otherDevicesDurationGroup" style="display: none;">
+                    <label>مدة استخدام الأجهزة الأخرى منذ البداية (سنوات):</label>
+                    <input type="number" name="otherDevicesDurationTotal" step="0.5" placeholder="مثلاً: 2">
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="otherDevicesDurationSingleGroup" style="display: none;">
                     <label>مدة استخدام الأجهزة الأخرى في المرة الواحدة (ساعات):</label>
-                    <input type="number" name="otherDevicesDurationSingle" step="0.5">
+                    <input type="number" name="otherDevicesDurationSingle" step="0.5" placeholder="مثلاً: 3">
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="otherDevicesDurationDailyGroup" style="display: none;">
                     <label>مدة استخدام الأجهزة الأخرى يومياً (ساعات):</label>
-                    <input type="number" name="otherDevicesDurationDaily" step="0.5">
+                    <input type="number" name="otherDevicesDurationDaily" step="0.5" placeholder="مثلاً: 4">
                 </div>
             </div>
 
@@ -386,7 +370,7 @@
         <div id="thankYouSection" class="thank-you-box" style="display: none;">
             <h2>شكراً لمشاركتك! 🎉</h2>
             <p>تم حفظ بياناتك بنجاح للمساهمة في هذا البحث العلمي.</p>
-            <button onclick="location.reload()" class="btn-primary" style="margin-top: 20px;">تعبئة استبيان جديد</button>
+            <button onclick="location.reload()" class="btn-primary" style="margin-top: 20px;">تعبئة استبيان آخر</button>
         </div>
     </div>
 

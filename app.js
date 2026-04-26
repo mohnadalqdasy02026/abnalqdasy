@@ -1,10 +1,9 @@
 // ============================================
 // نظام استبيان جامعة صنعاء - app.js
 // ============================================
-
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById("surveyForm");
-
+    
     // التحقق إذا كان المستخدم قد ملأ الاستبيان مسبقاً
     if (localStorage.getItem('surveySubmitted')) {
         document.getElementById('surveyForm').innerHTML = `
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
     }
-
+    
     // التحقق من الموافقة
     const consentRadios = document.querySelectorAll('input[name="consent"]');
     consentRadios.forEach(radio => {
@@ -28,7 +27,35 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
+    
+    // إضافة حدث لإظهار/إخفاء حقول الأجهزة الأخرى
+    const otherDevicesRadios = document.querySelectorAll('input[name="otherDevicesUse"]');
+    otherDevicesRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            const otherDevicesTypeGroup = document.getElementById('otherDevicesTypeGroup');
+            const otherDevicesDurationGroup = document.getElementById('otherDevicesDurationGroup');
+            const otherDevicesDurationSingleGroup = document.getElementById('otherDevicesDurationSingleGroup');
+            const otherDevicesDurationDailyGroup = document.getElementById('otherDevicesDurationDailyGroup');
+            
+            if (this.value === 'نعم') {
+                otherDevicesTypeGroup.style.display = 'block';
+                otherDevicesDurationGroup.style.display = 'block';
+                otherDevicesDurationSingleGroup.style.display = 'block';
+                otherDevicesDurationDailyGroup.style.display = 'block';
+            } else {
+                otherDevicesTypeGroup.style.display = 'none';
+                otherDevicesDurationGroup.style.display = 'none';
+                otherDevicesDurationSingleGroup.style.display = 'none';
+                otherDevicesDurationDailyGroup.style.display = 'none';
+                // مسح القيم عند الإخفاء
+                document.querySelectorAll('input[name="otherDevicesType"]').forEach(cb => cb.checked = false);
+                document.querySelector('input[name="otherDevicesDurationTotal"]').value = '';
+                document.querySelector('input[name="otherDevicesDurationSingle"]').value = '';
+                document.querySelector('input[name="otherDevicesDurationDaily"]').value = '';
+            }
+        });
+    });
+    
     if (form) {
         form.addEventListener("submit", handleSurveySubmit);
     }
@@ -36,18 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function handleSurveySubmit(e) {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     const formData = collectFormData();
-
     try {
         const response = await fetch("/survey", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         });
-
         if (response.ok) {
             localStorage.setItem('surveySubmitted', 'true');
             document.getElementById('surveyForm').style.display = 'none';
@@ -75,13 +98,11 @@ function collectFormData() {
         id: 'survey_' + Date.now(),
         timestamp: new Date().toISOString()
     };
-
     const formElements = document.getElementById("surveyForm").elements;
     
     // تجميع القيم من كافة عناصر النموذج
     for (let element of formElements) {
         if (!element.name) continue;
-
         if (element.type === "radio") {
             if (element.checked) data[element.name] = element.value;
         } else if (element.type === "checkbox") {
@@ -96,6 +117,5 @@ function collectFormData() {
             data[element.name] = element.value;
         }
     }
-
     return data;
 }

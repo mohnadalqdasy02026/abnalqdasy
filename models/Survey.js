@@ -21,21 +21,17 @@ const surveySchema = new mongoose.Schema({
 
     // القسم الثاني: بيانات استخدام الهاتف الذكي
     phoneType: String, // النوع (شاشة لمس / لوحة مفاتيح)
-    phoneLength: Number, // الطول
-    phoneWidth: Number, // العرض
-    phoneThickness: Number, // السمك
-    phoneWeight: Number, // الوزن
     screenSize: Number, // حجم الشاشة
     usageDurationTotal: Number, // مدة الاستخدام منذ البداية وحتى الآن
-    usageDurationDaily: Number, // مدة الاستخدام في المرة الواحدة يومياً
-    usagePeriod: String, // فترة الاستخدام (الصباح، الظهيرة، إلخ)
+    usageDurationDaily: Number, // مدة الاستخدام اليومي
+    usagePeriod: String, // فترة الاستخدام (اختيارات متعددة)
     restTime: String, // وقت الراحة
     mainHandUsed: String, // اليد الأساسية المستخدمة
     dataEntryMethod: String, // طريقة إدخال البيانات (الكتابة)
-    bodyPosture: String, // وضعية الجسم أثناء الاستخدام
+    bodyPosture: String, // وضعية الجسم أثناء الاستخدام (اختيارات متعددة)
     usagePurpose: String, // الغرض من الاستخدام
     otherDevicesUse: String, // استخدام أجهزة أخرى
-    otherDevicesType: String, // نوع الأجهزة الأخرى
+    otherDevicesType: String, // نوع الأجهزة الأخرى (اختياري)
     otherDevicesDurationTotal: Number, // مدة استخدام الأجهزة الأخرى منذ البداية
     otherDevicesDurationSingle: Number, // مدة استخدام الأجهزة الأخرى في المرة الواحدة
     otherDevicesDurationDaily: Number, // مدة استخدام الأجهزة الأخرى يومياً

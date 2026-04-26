@@ -32,10 +32,6 @@ const fieldMap = {
     accidentHistory: "تاريخ التعرض لحادث عام",
     specialization: "نوع التخصص",
     phoneType: "نوع الهاتف",
-    phoneLength: "الطول (ملم)",
-    phoneWidth: "العرض (ملم)",
-    phoneThickness: "السمك (ملم)",
-    phoneWeight: "الوزن (جم)",
     screenSize: "حجم الشاشة (بوصة)",
     usageDurationTotal: "مدة الاستخدام (سنوات)",
     usageDurationDaily: "مدة الاستخدام اليومي (ساعات)",
@@ -179,11 +175,12 @@ app.post("/login", async (req, res) => {
 // =======================
 app.post("/add-user", async (req, res) => {
     try {
-        const { name, username, password } = req.body;
+        const { name, username, password, role } = req.body;
+        const userRole = role === "admin" ? "admin" : "student";
         const exists = await User.findOne({ username: username.toLowerCase() });
         if (exists) return res.status(400).send("المستخدم موجود مسبقاً");
-        await User.create({ name, username: username.toLowerCase(), password, role: "student" });
-        res.send("تمت إضافة المستخدم بنجاح ✅");
+        await User.create({ name, username: username.toLowerCase(), password, role: userRole });
+        res.send(`تمت إضافة ${userRole === "admin" ? "مدير" : "مستخدم"} بنجاح ✅`);
     } catch (err) {
         res.status(500).send("خطأ في السيرفر");
     }
@@ -202,6 +199,18 @@ app.delete("/delete-user/:id", async (req, res) => {
     try {
         await User.findByIdAndDelete(req.params.id);
         res.send("تم حذف المستخدم بنجاح 🗑️");
+    } catch (err) {
+        res.status(500).send("خطأ في الحذف");
+    }
+});
+
+// =======================
+// 🗑️ حذف استبيان واحد
+// =======================
+app.delete("/delete-survey/:id", async (req, res) => {
+    try {
+        await Survey.findByIdAndDelete(req.params.id);
+        res.send("تم حذف الاستبيان بنجاح 🗑️");
     } catch (err) {
         res.status(500).send("خطأ في الحذف");
     }
