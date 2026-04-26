@@ -78,7 +78,8 @@ function loadDataTable(surveys) {
     }
     surveys.forEach((survey, index) => {
         const row = document.createElement('tr');
-        const surveyId = survey._id || `survey_${index}`;
+        // تأكد من استخدام المعرف الصحيح من الكائن المترجم أو الأصلي
+        const surveyId = survey.originalId || survey._id;
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${survey["الجنس"] || '-'}</td>

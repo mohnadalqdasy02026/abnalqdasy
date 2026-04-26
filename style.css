@@ -937,3 +937,66 @@ p {
 .loading {
     animation: pulse 1.5s ease-in-out infinite;
 }
+
+/* تحسينات إضافية للمظهر */
+.section {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.form-group {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.form-group:last-child {
+    border-bottom: none;
+}
+
+.form-group:hover {
+    background-color: #fafafa;
+}
+
+.form-group label {
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.radio-group, .checkbox-group {
+    padding-right: 10px;
+}
+
+.radio-label, .checkbox-label {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.radio-label:hover, .checkbox-label:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.btn-submit {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 40px;
+    padding: 15px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+}
+
+.thank-you-box {
+    border: 2px solid var(--success-color);
+    background-color: #f0fdf4;
+    color: #166534;
+}
+
+.thank-you-box h2 {
+    color: #166534;
+}

@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('surveyForm').innerHTML = `
             <div class="thank-you-box" style="text-align:center; padding:50px; background:white; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
                 <h2 style="color:#2c3e50;">شكراً لك! 🎉</h2>
-                <p>لقد قمت بتعبئة هذا الاستبيان مسبقاً من هذا المتصفح.</p>
-                <button onclick="localStorage.removeItem('surveySubmitted'); location.reload();" class="btn-primary" style="margin-top:20px; padding: 10px 20px; cursor: pointer;">تعبئة استبيان آخر</button>
+                <p>لقد قمت بتعبئة هذا الاستبيان مسبقاً.</p>
             </div>
         `;
     }

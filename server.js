@@ -256,6 +256,7 @@ app.get("/data", async (req, res) => {
             Object.keys(fieldMap).forEach(key => {
                 if (obj[key] !== undefined) translated[fieldMap[key]] = obj[key];
             });
+            translated.originalId = obj._id;
             if (obj.createdAt) translated["تاريخ الإرسال"] = new Date(obj.createdAt).toLocaleString('ar-EG');
             return translated;
         });
