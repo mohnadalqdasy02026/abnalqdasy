@@ -1144,3 +1144,720 @@ body.dark-theme .data-table td {
 .thank-you-box h2 {
     color: #166534;
 }
+
+
+/* ============================================
+   Contact Section - Creative Design
+   ============================================ */
+
+.contact-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    padding: 4rem 2rem;
+    margin: 3rem 0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .contact-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.contact-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .contact-card {
+    background: #1e293b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+    pointer-events: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .contact-card:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* WhatsApp Card Styling */
+.contact-card.whatsapp-card {
+    border-top-color: #25D366;
+}
+
+.contact-card.whatsapp-card .contact-icon {
+    color: #25D366;
+}
+
+/* Phone Card Styling */
+.contact-card.phone-card {
+    border-top-color: #FF9500;
+}
+
+.contact-card.phone-card .contact-icon {
+    color: #FF9500;
+}
+
+/* Email Card Styling */
+.contact-card.email-card {
+    border-top-color: #EA4335;
+}
+
+.contact-card.email-card .contact-icon {
+    color: #EA4335;
+}
+
+.contact-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 2.5rem;
+}
+
+body.dark-theme .contact-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+}
+
+.contact-card:hover .contact-icon {
+    transform: scale(1.15) rotate(5deg);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+}
+
+.contact-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-contact {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    border-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1fa857;
+    border-color: #1fa857;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-phone {
+    background-color: #FF9500;
+    color: white;
+    border-color: #FF9500;
+}
+
+.btn-phone:hover {
+    background-color: #E68900;
+    border-color: #E68900;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3);
+}
+
+.btn-email {
+    background-color: #EA4335;
+    color: white;
+    border-color: #EA4335;
+}
+
+.btn-email:hover {
+    background-color: #D33425;
+    border-color: #D33425;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(234, 67, 53, 0.3);
+}
+
+/* Animation for contact cards on load */
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-card {
+    animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+.contact-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.contact-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.contact-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 2rem 1rem;
+        margin: 2rem 0;
+    }
+
+    .contact-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .btn-contact {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 1.5rem 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .contact-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-header h2::after {
+        width: 40px;
+        height: 3px;
+    }
+
+    .contact-header p {
+        font-size: 0.95rem;
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .contact-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .contact-card p {
+        font-size: 0.9rem;
+    }
+
+    .btn-contact {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Dark Theme Adjustments for Contact Section */
+body.dark-theme .contact-card h3 {
+    color: var(--text-dark);
+}
+
+body.dark-theme .contact-card p {
+    color: var(--text-light);
+}
+
+body.dark-theme .btn-whatsapp,
+body.dark-theme .btn-phone,
+body.dark-theme .btn-email {
+    transition: all 0.3s ease;
+}
+
+/* Pulse animation for contact icons */
+@keyframes iconPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+}
+
+.contact-card:hover .contact-icon {
+    animation: iconPulse 1.5s ease-in-out;
+}
+
+
+/* ============================================
+   Floating Contact Button & Modal
+   ============================================ */
+
+/* Floating Contact Button */
+.floating-contact-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366 0%, #20BA5F 100%);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-contact-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.floating-contact-btn:active {
+    transform: scale(0.95);
+}
+
+body.dark-theme .floating-contact-btn {
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.6);
+}
+
+/* Pulse Animation for Floating Button */
+@keyframes pulse-float {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.8);
+    }
+}
+
+.floating-contact-btn {
+    animation: pulse-float 2s ease-in-out infinite;
+}
+
+/* Contact Modal */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeInModal 0.3s ease;
+    overflow-y: auto;
+}
+
+.contact-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.contact-modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 900px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideInModal 0.3s ease;
+}
+
+body.dark-theme .contact-modal-content {
+    background: #1e293b;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-modal-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+body.dark-theme .close-modal-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-modal-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.contact-modal-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-modal-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.contact-modal-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-modal-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .contact-modal-card {
+    background: #334155;
+}
+
+.contact-modal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .contact-modal-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* WhatsApp Modal Card */
+.contact-modal-card.whatsapp-card {
+    border-top-color: #25D366;
+}
+
+/* Phone Modal Card */
+.contact-modal-card.phone-card {
+    border-top-color: #FF9500;
+}
+
+/* Email Modal Card */
+.contact-modal-card.email-card {
+    border-top-color: #EA4335;
+}
+
+.contact-modal-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 2rem;
+}
+
+body.dark-theme .contact-modal-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+}
+
+.contact-modal-card:hover .contact-modal-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.contact-modal-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-modal-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.contact-modal-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.contact-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-contact-modal {
+    display: inline-block;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-contact-modal.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    border-color: #25D366;
+}
+
+.btn-contact-modal.btn-whatsapp:hover {
+    background-color: #1fa857;
+    border-color: #1fa857;
+    transform: translateX(-2px);
+}
+
+.btn-contact-modal.btn-phone {
+    background-color: #FF9500;
+    color: white;
+    border-color: #FF9500;
+}
+
+.btn-contact-modal.btn-phone:hover {
+    background-color: #E68900;
+    border-color: #E68900;
+    transform: translateX(-2px);
+}
+
+.btn-contact-modal.btn-email {
+    background-color: #EA4335;
+    color: white;
+    border-color: #EA4335;
+}
+
+.btn-contact-modal.btn-email:hover {
+    background-color: #D33425;
+    border-color: #D33425;
+    transform: translateX(-2px);
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+    .floating-contact-btn {
+        bottom: 20px;
+        left: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+
+    .contact-modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .contact-modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-modal-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-modal-card {
+        padding: 1.25rem;
+    }
+
+    .contact-modal-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-contact-btn {
+        bottom: 15px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .contact-modal-content {
+        padding: 1rem;
+        width: 98%;
+    }
+
+    .contact-modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .contact-modal-header p {
+        font-size: 0.9rem;
+    }
+
+    .contact-modal-card {
+        padding: 1rem;
+    }
+
+    .contact-modal-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-modal-card p {
+        font-size: 0.85rem;
+    }
+
+    .btn-contact-modal {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .close-modal-btn {
+        font-size: 1.5rem;
+        width: 35px;
+        height: 35px;
+    }
+}

@@ -2,6 +2,45 @@
 // نظام استبيان جامعة صنعاء - app.js
 // ============================================
 
+// Contact Modal Functionality
+function initContactModal() {
+    const contactBtn = document.getElementById('contactBtn');
+    const contactModal = document.getElementById('contactModal');
+    const closeModalBtn = document.getElementById('closeContactModal');
+    
+    // Open modal when button is clicked
+    if (contactBtn) {
+        contactBtn.addEventListener('click', function() {
+            contactModal.classList.add('show');
+        });
+    }
+    
+    // Close modal when close button is clicked
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', function() {
+            contactModal.classList.remove('show');
+        });
+    }
+    
+    // Close modal when clicking outside of it
+    if (contactModal) {
+        contactModal.addEventListener('click', function(event) {
+            if (event.target === contactModal) {
+                contactModal.classList.remove('show');
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            if (contactModal) {
+                contactModal.classList.remove('show');
+            }
+        }
+    });
+}
+
 // Theme Toggle Functionality
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
@@ -30,6 +69,9 @@ function initThemeToggle() {
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize theme toggle
     initThemeToggle();
+    
+    // Initialize contact modal
+    initContactModal();
     
     const form = document.getElementById("surveyForm");
     
