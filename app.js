@@ -1,7 +1,36 @@
 // ============================================
 // نظام استبيان جامعة صنعاء - app.js
 // ============================================
+
+// Theme Toggle Functionality
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeIcon.textContent = '☀️';
+    } else {
+        themeIcon.textContent = '🌙';
+    }
+    
+    // Toggle theme on button click
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize theme toggle
+    initThemeToggle();
+    
     const form = document.getElementById("surveyForm");
     
     // التحقق إذا كان المستخدم قد ملأ الاستبيان مسبقاً
@@ -20,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
         radio.addEventListener('change', function () {
             if (this.value === 'لا') {
                 alert('يجب الموافقة للمتابعة');
-                form.style.display = 'none';
+                if (form) form.style.display = 'none';
             } else {
-                form.style.display = 'block';
+                if (form) form.style.display = 'block';
             }
         });
     });
@@ -37,20 +66,23 @@ document.addEventListener('DOMContentLoaded', function () {
             const otherDevicesDurationDailyGroup = document.getElementById('otherDevicesDurationDailyGroup');
             
             if (this.value === 'نعم') {
-                otherDevicesTypeGroup.style.display = 'block';
-                otherDevicesDurationGroup.style.display = 'block';
-                otherDevicesDurationSingleGroup.style.display = 'block';
-                otherDevicesDurationDailyGroup.style.display = 'block';
+                if (otherDevicesTypeGroup) otherDevicesTypeGroup.style.display = 'block';
+                if (otherDevicesDurationGroup) otherDevicesDurationGroup.style.display = 'block';
+                if (otherDevicesDurationSingleGroup) otherDevicesDurationSingleGroup.style.display = 'block';
+                if (otherDevicesDurationDailyGroup) otherDevicesDurationDailyGroup.style.display = 'block';
             } else {
-                otherDevicesTypeGroup.style.display = 'none';
-                otherDevicesDurationGroup.style.display = 'none';
-                otherDevicesDurationSingleGroup.style.display = 'none';
-                otherDevicesDurationDailyGroup.style.display = 'none';
+                if (otherDevicesTypeGroup) otherDevicesTypeGroup.style.display = 'none';
+                if (otherDevicesDurationGroup) otherDevicesDurationGroup.style.display = 'none';
+                if (otherDevicesDurationSingleGroup) otherDevicesDurationSingleGroup.style.display = 'none';
+                if (otherDevicesDurationDailyGroup) otherDevicesDurationDailyGroup.style.display = 'none';
                 // مسح القيم عند الإخفاء
                 document.querySelectorAll('input[name="otherDevicesType"]').forEach(cb => cb.checked = false);
-                document.querySelector('input[name="otherDevicesDurationTotal"]').value = '';
-                document.querySelector('input[name="otherDevicesDurationSingle"]').value = '';
-                document.querySelector('input[name="otherDevicesDurationDaily"]').value = '';
+                const durationTotalInput = document.querySelector('input[name="otherDevicesDurationTotal"]');
+                const durationSingleInput = document.querySelector('input[name="otherDevicesDurationSingle"]');
+                const durationDailyInput = document.querySelector('input[name="otherDevicesDurationDaily"]');
+                if (durationTotalInput) durationTotalInput.value = '';
+                if (durationSingleInput) durationSingleInput.value = '';
+                if (durationDailyInput) durationDailyInput.value = '';
             }
         });
     });

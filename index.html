@@ -11,9 +11,15 @@
     <nav class="navbar">
         <div class="container">
             <span class="nav-title">نظام الاستبيان الأكاديمي</span>
-<button class="btn-dashboard">
-  <a href="login.html" style="color: rgb(23, 64, 248); text-decoration: none;">لوحة التحكم</a>
-</button>        </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="btn-theme" title="تبديل الثيم">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="btn-dashboard">
+                    <a href="login.html" style="color: rgb(23, 64, 248); text-decoration: none;">لوحة التحكم</a>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Container -->
@@ -133,18 +139,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label>أمراض عضلية هيكلية كامنة:</label>
+                    <label>هل لديك تاريخ مرضي لإصابات رضية سابقة تخص منطقة الرقبة؟</label>
                     <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="musculoskeletalDiseases" value="نعم"> نعم</label>
-                        <label class="radio-label"><input type="radio" name="musculoskeletalDiseases" value="لا"> لا</label>
+                        <label class="radio-label"><input type="radio" name="neckTraumaHistory" value="نعم"> نعم</label>
+                        <label class="radio-label"><input type="radio" name="neckTraumaHistory" value="لا"> لا</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>تاريخ التعرض لحادث عام:</label>
+                    <label>هل سبق أن شُخِّصت بأي مرض أو اضطراب يصيب العضلات أو العظام أو المفاصل؟</label>
                     <div class="radio-group">
-                        <label class="radio-label"><input type="radio" name="accidentHistory" value="نعم"> نعم</label>
-                        <label class="radio-label"><input type="radio" name="accidentHistory" value="لا"> لا</label>
+                        <label class="radio-label"><input type="radio" name="musculoskeletalDiseases" value="نعم"> نعم</label>
+                        <label class="radio-label"><input type="radio" name="musculoskeletalDiseases" value="لا"> لا</label>
                     </div>
                 </div>
 
